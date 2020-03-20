@@ -1,0 +1,37 @@
+<div class="flex-container">
+    <div class="img-container">
+        <img [src]="movie.image_url" alt="image not Available" #movieImg>
+        <div>
+            <i class="fa fa-star" aria-hidden="true"></i> {{movie.rating}}
+            <p><strong>{{movie.original_title}}</strong></p>
+        </div>
+
+    </div>
+    <div class="reviews-container">
+        <p>{{movie.overview}}</p>
+        <div>
+            <select class="watchlist-option" #watch_option (change)="modify_watchOption(watch_option,movie.id)">
+                <option *ngFor="let optionObj of watchListObj" [selected]="movie.watch_state == optionObj.value" value="{{ optionObj.value }}">
+                    {{ optionObj.display_name }}
+                </option>
+            </select>
+            <div class="inline-block" [class.loader]="showselectLoader">
+            </div>
+        </div>
+        <div class="review-footer">
+            <div class="genre-container">
+                <strong>Genres:</strong>
+                <div class="genre_keywords">
+                    <!-- <div *ngFor="let genre of getGenres(movie.genre_ids)">
+                        {{genre}}
+                    </div> -->
+                    <div>
+                        {{getGenres(movie.genre_ids).join(",")}}
+                    </div>
+                </div>
+
+            </div>
+            <p><strong>Release Date:</strong> {{movie.release_date}}</p>
+        </div>
+    </div>
+</div>

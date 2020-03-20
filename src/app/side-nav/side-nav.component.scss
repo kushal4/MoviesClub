@@ -1,0 +1,12 @@
+.sidebar {
+    display: block;
+    z-index: 9999;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    max-height: 98vh;
+}
+
+.fa-arrow-left {
+    cursor: pointer;
+}

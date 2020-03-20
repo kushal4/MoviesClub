@@ -1,0 +1,37 @@
+<app-loader [show]="show"></app-loader>
+<main class="container container-position" align="center">
+    <form #f="ngForm">
+        <div class="form-header">
+            <h3>Sign in to MoviesClub</h3>
+        </div>
+        <div class="form-body">
+            <div class="card">
+                <div class="form-group row no-gutters form-input">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" #email="ngModel" [(ngModel)]="signIn.email" class="form-control" required>
+                    <div class="alert alert-danger mt-1 block" *ngIf="errorMsg.email ">
+                        {{ errorMsg.email[0] }}
+                    </div>
+                </div>
+                <div class="form-group row no-gutters form-input">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" #password="ngModel" [(ngModel)]="signIn.password" [ngClass]="{'border border-danger' : errorMsg.password}" name="password" class="form-control" required>
+                    <div class="alert alert-danger mt-1 block" *ngIf="errorMsg.password ">
+                        {{ errorMsg.password[0] }}
+                    </div>
+                </div>
+                <div class="sign-btn-group row">
+                    <div class="col-sm-2 col-md-2">
+                        <button class="btn btn-success" (click)="Login(f.value)">Sign in</button>
+                    </div>
+                    <div class="col-sm-10 col-md-10">
+                        <div class="signup">
+                            Don't have account
+                            <a routerLink="/sign-up">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>

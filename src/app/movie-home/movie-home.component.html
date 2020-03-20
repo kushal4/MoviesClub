@@ -1,0 +1,15 @@
+<app-loader [show]="showLoader"></app-loader>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <bs-navbar (valueChange)="toggleShow($event)" (searchChange)="searchMovies($event)" [showHamburger]="show"></bs-navbar>
+    </div>
+    <div class="col-2">
+        <side-nav [show]="show" (navChange)="toggleShow($event)" (movieListChange)="fetchMovieList($event)" [genreName]="genreName" [genreList]="genreList"></side-nav>
+    </div>
+
+    <div class="col">
+        <div class="flex-container" *ngFor="let movie of filterMovieList">
+            <movie [movie]="movie" [genreList]="genreList"></movie>
+        </div>
+    </div>
+</div>

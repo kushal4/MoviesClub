@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+
+
+    <div class="bs-nav-container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item hamburger" (click)="toggle()">
+                    <a class="nav-link">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li>
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" #movieTitle placeholder="Search" (keyup)="searchMovie(movieTitle.value)">
+                    </div>
+
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <ng-template #anonymousUser>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/login">Login</a>
+                    </li>
+                </ng-template>
+
+                <li ngbDropdown class="nav-item dropdown">
+                    <a ngbDropdownToggle class="nav-link  dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        User
+                    </a>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item">My Orders</a>
+                        <a class="dropdown-item">Manage Orders</a>
+                        <a class="dropdown-item">Manage Products</a>
+                        <a class="dropdown-item" (click)="logout()">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,19 @@
+// .genre-list {
+//     position: absolute;
+//     margin-top: 20px;
+//     top: 80px;
+// }
+.list-group-item {
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    margin-top: 100px;
+    flex-direction: row;
+}
+
+.sidebar {
+    display: block;
+    z-index: 9999;
+}

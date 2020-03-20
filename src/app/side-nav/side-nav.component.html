@@ -1,0 +1,11 @@
+<div class="col" [class.sidebar]="show" [class.d-none]="!show">
+    <div class="list-group genre-list" *ngIf="genreList.length > 0">
+        <a class="list-group-item">
+            <i class="fa fa-arrow-left" aria-hidden="true" (click)="unHideNav(show)"></i>
+        </a>
+        <a class="list-group-item list-group-item-action" [class.active]="!genreName" routerLink="/movie-home" (click)="showMovieList(-1)">All Categories</a>
+        <a class="list-group-item list-group-item-action" [class.active]="genreName==genre.name" routerLink="/movie-home" [queryParams]="{genre:genre.name}" *ngFor="let genre of genreList" (click)="showMovieList(genre.id)">
+                {{genre['name']}}
+            </a>
+    </div>
+</div>
