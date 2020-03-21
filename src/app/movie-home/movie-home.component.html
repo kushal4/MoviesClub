@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-12">
         <bs-navbar (valueChange)="toggleShow($event)" (searchChange)="searchMovies($event)" [showHamburger]="show"></bs-navbar>
     </div>
-    <div class="col-2">
+    <div class="col col-md-4" *ngIf="show">
         <side-nav [show]="show" (navChange)="toggleShow($event)" (movieListChange)="fetchMovieList($event)" [genreName]="genreName" [genreList]="genreList"></side-nav>
     </div>
 

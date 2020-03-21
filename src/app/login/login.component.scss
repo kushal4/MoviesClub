@@ -1,33 +1,43 @@
-.container-position {
-    margin-top: 100px;
+// .container-position {
+//     margin-top: 100px;
+// }
+// .form-header {
+//     float: left;
+//     margin: 1% 0 2% 25%;
+// }
+// .form-body {
+//     clear: both;
+// }
+// .form-input {
+//     margin: 20px 200px 20px 200px;
+// }
+// label {
+//     font-weight: 600;
+// }
+// .form-body .card {
+//     width: 83%;
+// }
+// .sign-btn-group {
+//     margin-left: 19%;
+//     margin-bottom: 2%;
+// }
+// .signup {
+//     margin-top: 7px;
+// }
+.sign-form {
+    margin: 0 15%;
 }
 
-.form-header {
-    float: left;
-    margin: 1% 0 2% 25%;
-}
-
-.form-body {
-    clear: both;
-}
-
-.form-input {
-    margin: 20px 200px 20px 200px;
+.form-position {
+    padding: 10%;
 }
 
 label {
     font-weight: 600;
 }
 
-.form-body .card {
-    width: 83%;
-}
-
-.sign-btn-group {
-    margin-left: 19%;
-    margin-bottom: 2%;
-}
-
-.signup {
-    margin-top: 7px;
+@media (min-width:530px) {
+    .signup {
+        float: right;
+    }
 }

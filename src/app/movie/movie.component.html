@@ -8,7 +8,7 @@
 
     </div>
     <div class="reviews-container">
-        <p>{{movie.overview}}</p>
+        <p class="overview-cont">{{movie.overview}}</p>
         <div>
             <select class="watchlist-option" #watch_option (change)="modify_watchOption(watch_option,movie.id)">
                 <option *ngFor="let optionObj of watchListObj" [selected]="movie.watch_state == optionObj.value" value="{{ optionObj.value }}">
@@ -20,11 +20,9 @@
         </div>
         <div class="review-footer">
             <div class="genre-container">
-                <strong>Genres:</strong>
+
                 <div class="genre_keywords">
-                    <!-- <div *ngFor="let genre of getGenres(movie.genre_ids)">
-                        {{genre}}
-                    </div> -->
+                    <strong>Genres:</strong>
                     <div>
                         {{getGenres(movie.genre_ids).join(",")}}
                     </div>

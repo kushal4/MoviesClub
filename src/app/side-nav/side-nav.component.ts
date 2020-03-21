@@ -18,8 +18,8 @@ export class SideNavComponent implements OnInit {
   @Output() movieListChange= new EventEmitter();
   ngOnInit() {
     console.log("fires");
-    
-    
+
+
   }
 
    unHideNav(show){
@@ -29,6 +29,7 @@ export class SideNavComponent implements OnInit {
 
   showMovieList(genreId){
       this.movieListChange.emit(genreId);
+      this.show=!this.show;
   }
 
 }
