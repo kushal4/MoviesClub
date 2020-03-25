@@ -1,6 +1,7 @@
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,10 @@ signIn={
         let code = response["code"];
         if (code == 200) {
           if (response.hasOwnProperty("access_token")) {
-            localStorage.setItem("access_token", response["access_token"]);
+            let token=response["access_token"];
+            let decode_token=jwt_decode(token);
+            console.log(decode_token);
+            localStorage.setItem("access_token", token);
             this.router.navigate([returnUrl]);
           }
         }else{

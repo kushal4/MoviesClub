@@ -14,31 +14,31 @@
                         <label for="name">Name</label>
                         <input name="name" #name="ngModel" [ngClass]="{'border border-danger' : errMsg['name']}" [(ngModel)]=" createAccount.name " type="text " id="name " class="form-control " required>
                         <div class="alert alert-danger block" *ngIf="errMsg['name'] ">
-                            {{ errMsg["name"][0] }}
+                            {{ errMsg["name"] }}
                         </div>
                     </div>
                     <div class="form-group row no-gutters form-input ">
                         <label for="email ">Email</label>
                         <input #email="ngModel" [(ngModel)]="createAccount.email " id="email" name="email" [ngClass]="{ 'border border-danger' :errMsg['email']} " type="text " class="form-control " required>
                         <div class="alert alert-danger mt-1 block" *ngIf="errMsg['email']">
-                            {{ errMsg["email"][0] }}
+                            {{ errMsg["email"] }}
                         </div>
                     </div>
                     <div class="form-group row no-gutters form-input ">
                         <label for="password ">Password</label>
                         <input id="password" type="password" #password="ngModel" name="password" [ngClass]="{ 'border border-danger' : errMsg['password'] }" [(ngModel)]=" createAccount.password " class="form-control " required>
                         <div class="alert alert-danger mt-1 block" *ngIf="errMsg['password'] ">
-                            {{ errMsg["password"][0] }}
+                            {{ errMsg["password"] }}
                         </div>
                     </div>
-                    <div class="form-group row no-gutters form-input ">
+                    <!-- <div class="form-group row no-gutters form-input ">
                         <label for="password_confirmation ">Confirm Password</label>
                         <input id="password_confirmation" #password_confirmation="ngModel" [ngClass]="{ 'border border-danger' : errMsg['password_confirmation'] }" name="password_confirmation" type="password" class="form-control" [(ngModel)]="createAccount.password_confirmation"
                             required>
                         <div class="alert alert-danger mt-1 block" *ngIf="errMsg['password_confirmation'] ">
                             {{ errMsg["password_confirmation"][0] }}
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group form-input " (click)="signUp(f.value) ">
                         <button [disabled]="!(f.valid)" class="btn btn-success btn-block ">Create Account</button>
                     </div>

@@ -5,6 +5,7 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import {FormsModule}  from '@angular/forms';
@@ -36,6 +37,7 @@ import { AuthInterceptor } from './interceptors/AuthInterceptor';
     NgbModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    NgxPaginationModule,
     RouterModule.forRoot([
       {
         "path":"",

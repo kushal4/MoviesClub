@@ -3,14 +3,14 @@
     z-index: 9999;
     position: sticky;
     top: 0;
-    width: 50%;
+    width: 57%;
     overflow-y: auto;
     max-height: 98vh;
 }
 
 @media (min-width:700px) {
     .sidebar {
-        right: 4%;
+        left: 0;
     }
 }
 

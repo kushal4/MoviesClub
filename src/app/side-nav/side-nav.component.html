@@ -1,4 +1,4 @@
-<div class="col" [class.sidebar]="show" [class.d-none]="!show">
+<div [class.sidebar]="show" [class.d-none]="!show">
     <div class="list-group genre-list" *ngIf="genreList.length > 0">
         <a class="list-group-item">
             <i class="fa fa-arrow-left" aria-hidden="true" (click)="unHideNav(show)"></i>

@@ -9,8 +9,35 @@
 
 .flex-container {
     display: flex;
-    margin-top: 100px;
+    margin-top: 1%;
     flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8%;
+}
+
+.filter_options {
+    z-index: 9999;
+    position: sticky;
+    top: 12%;
+    margin-right: 5%;
+}
+
+.movie-select {
+    float: right;
+}
+
+.custom-select label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.movie-select select {
+    display: inline-block;
+    width: auto;
 }
 
 .sidebar {
