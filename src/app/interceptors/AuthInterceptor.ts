@@ -3,12 +3,13 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest,HttpErrorResponse 
 import { Observable,BehaviorSubject } from "rxjs";
 import {tap,mergeMap,filter,take} from 'rxjs/operators';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
     private isRefreshing = false;
     private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null)
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService,private router:Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("call interceptor");
@@ -49,27 +50,29 @@ export class AuthInterceptor implements HttpInterceptor {
 
 
       this.isRefreshing = true;
-      this.refreshTokenSubject.next(null);
+      //this.refreshTokenSubject.next(null);
       console.log("handleError called");
-      return this.authService.refreshToken().subscribe(data => {
-          console.log("called");
-          //If reload successful update tokens
-          if (data["status"] == 200) {
-            //Update tokens
-            localStorage.setItem("access_token", data["access_token"]);
-            //localStorage.setItem("refreshToken", data.access_token);
-            //Clone our fieled request ant try to resend it
-            // request = request.clone({
-            //   setHeaders: {
-            //     'Authorization': `Bearer ${data.access_token}`
-            //   }
-            // });
+      localStorage.removeItem("access_token");
+      this.router.navigate(['login']);
+      // return this.authService.refreshToken().subscribe(data => {
+      //     console.log("called");
+      //     //If reload successful update tokens
+      //     if (data["status"] == 200) {
+      //       //Update tokens
+      //       localStorage.setItem("access_token", data["access_token"]);
+      //       //localStorage.setItem("refreshToken", data.access_token);
+      //       //Clone our fieled request ant try to resend it
+      //       // request = request.clone({
+      //       //   setHeaders: {
+      //       //     'Authorization': `Bearer ${data.access_token}`
+      //       //   }
+      //       // });
 
-          }else {
-            //Logout from account
-          }
-        }
-      );
+      //     }else {
+      //       //Logout from account
+      //     }
+      //   }
+     // );
 }
 
 }

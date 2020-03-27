@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-
+import { WebworkerService } from '../web-worker/webworker.service';
+import { EXCEL_EXPORT } from '../web-worker/excel-export.script';
+import * as fileSaver from 'file-saver';
 @Component({
   selector: 'app-movie-home',
   templateUrl: './movie-home.component.html',
@@ -21,8 +23,10 @@ export class MovieHomeComponent implements OnInit {
   genre_id = 0;
   total_pages = 1;
   p2: number = 1;
+  private EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+  private EXCEL_EXTENSION = 'xlsx';
   constructor(private moviesService: MoviesService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,private workerService: WebworkerService) { }
   show = false;
   showLoader = false;
   ngOnInit() {
@@ -54,7 +58,7 @@ export class MovieHomeComponent implements OnInit {
   }
 
   toggleShow(show) {
-    console.log("show is called");
+    console.log("show is called",show);
     this.show = show;
   }
 
@@ -101,6 +105,48 @@ export class MovieHomeComponent implements OnInit {
     console.log(titleKeyword);
     this.filterMovieList = ((titleKeyword != "") ? this.movieList.filter(movie => movie.original_title.includes(titleKeyword)) : this.movieList);
     console.log(this.filterMovieList);
+  }
+
+
+  exportCsv(movieList){
+    const input = {
+      config: {
+        body: movieList
+      },
+      host: window.location.host,
+      path: window.location.pathname,
+      protocol: window.location.protocol
+    };
+
+    this.workerService.run(EXCEL_EXPORT, input).then(
+      (result) => {
+       // console.log(result);
+        this.save(result, 'export', this.EXCEL_TYPE, this.EXCEL_EXTENSION);
+      }
+    ).catch(console.error);
+  }
+
+  private save(file, filename, filetype, fileextension) {
+  
+    const blob = new Blob([this.s2ab(file)], {
+      type: filetype
+    });
+    //console.log(blob);
+    const today = new Date();
+    const date = today.getFullYear() + '' + (today.getMonth() + 1) + '' + today.getDate() + '_';
+    const time = today.getHours() + '-' + today.getMinutes() + '-' + today.getSeconds();
+    const name = `${filename}${date}${time}.${fileextension}`;
+
+    fileSaver.saveAs(blob, name);
+  }
+
+  private s2ab(text: string): ArrayBuffer {
+    const buf = new ArrayBuffer(text.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i != text.length; ++i) {
+      view[i] = text.charCodeAt(i) & 0xFF;
+    }
+    return buf;
   }
 
 }

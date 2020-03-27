@@ -1,6 +1,7 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import {MoviesService} from '../movies.service';
 import { ActivatedRoute } from '@angular/router';
+//import {worker} from '../web-worker/worker.worker';
 
 @Component({
   selector: 'side-nav',
@@ -18,9 +19,9 @@ export class SideNavComponent implements OnInit {
   @Output() movieListChange= new EventEmitter();
   ngOnInit() {
     console.log("fires");
-
-
+    
   }
+
 
    unHideNav(show){
     this.show=!this.show;
@@ -30,6 +31,7 @@ export class SideNavComponent implements OnInit {
   showMovieList(genreId){
       this.movieListChange.emit(genreId);
       this.show=!this.show;
+      this.navChange.emit(this.show)
   }
 
 }

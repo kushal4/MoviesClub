@@ -5,12 +5,15 @@
     </div>
 
     <div class="col col-md-4">
-        <side-nav [show]="show" (navChange)="toggleShow($event)" (movieListChange)="fetchMovieList($event,false,true)" [genreName]="genreName" [genreList]="genreList"></side-nav>
+        <side-nav [show]="show" (navChange)="toggleShow($event)" (movieListChange)="fetchMovieList($event,true,true)" [genreName]="genreName" [genreList]="genreList"></side-nav>
     </div>
     <div class="col">
         <div class="flex-col">
-            <div class="filter_options">
-                <div class="movie-select">
+            <div class="filter_options row">
+                <div class="export-button col" align="left">
+                    <button class="btn btn-success" (click)="exportCsv(filterMovieList)">Export To CSV</button>
+                </div>
+                <div class="movie-select col" align="right">
                     <label class="label_page" for="page">Show
                         <select #limit="ngModel" id="pageSize" name="pageSize" [(ngModel)]="pageSize"  (change)="fetchPageSize(limit)" class="custom-select custom-select-sm form-control form-control-sm">
                                 <option value="5" selected>5</option>
