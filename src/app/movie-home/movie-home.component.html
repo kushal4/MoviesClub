@@ -9,7 +9,7 @@
     </div>
     <div class="col">
         <div class="flex-col">
-            <div class="filter_options">
+            <div class="filter_options filter-opt-md">
                 <div class="movie-select">
                     <label class="label_page" for="page">Show
                         <select #limit="ngModel" id="pageSize" name="pageSize" [(ngModel)]="pageSize"  (change)="fetchPageSize(limit)" class="custom-select custom-select-sm form-control form-control-sm">
@@ -22,7 +22,7 @@
                 </div>
 
             </div>
-            <div class="flex-container" *ngFor="let movie of filterMovieList | paginate: { itemsPerPage: pageSize, currentPage: p2, id: 'first' ,totalItems: (total_pages*pageSize)}">
+            <div class="flex-container flex-cont-md" *ngFor="let movie of filterMovieList | paginate: { itemsPerPage: pageSize, currentPage: p2, id: 'first' ,totalItems: (total_pages*pageSize)}">
                 <movie [movie]="movie " [genreList]="genreList "></movie>
             </div>
         </div>

@@ -1,11 +1,10 @@
-<div class="flex-container">
+<div class="flex-movie-container flex-movie-sm flex-movie-md flex-movie-lg">
     <div class="img-container">
         <img [src]="movie.image_url" alt="image not Available" #movieImg>
         <div>
             <i class="fa fa-star" aria-hidden="true"></i> {{movie.rating}}
             <p><strong>{{movie.original_title}}</strong></p>
         </div>
-
     </div>
     <div class="reviews-container">
         <p class="overview-cont">{{movie.overview}}</p>

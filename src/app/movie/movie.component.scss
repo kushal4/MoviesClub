@@ -7,37 +7,39 @@
     // height: 231px;
 }
 
-.flex-container {
+.flex-movie-container {
     border: 3px solid #f7f7f9;
     padding: 2%;
     margin-bottom: 2%;
+    //
 }
 
-@media (min-width:700px) {
-    .flex-container {
+@media (min-width:500px) {
+    .flex-movie-md {
         display: flex;
-        flex-direction: row;
-        width: 55vw;
-        padding: 1%;
     }
     .img-container {
         flex: 0 0 12em;
     }
-    // .reviews-container {
-    //     // flex: 0 0 70em;
-    // }
-    // .overview-cont {
-    //     //  max-width: 44%;
-    // }
-    // .review-footer {
-    //     position: absolute;
-    //     bottom: -20px;
-    // }
 }
 
-@media (max-width:500px) {
-    .flex-container {
-        margin-top: 2%;
+@media(max-width:751px) {
+    .flex-movie-md {
+        width: 100vw;
+    }
+}
+
+@media (min-width:651px) and (max-width:1079px) {
+    .flex-movie-container {
+        position: relative;
+        //right: 25%;
+    }
+}
+
+@media (min-width:500px) and (max-width:650px) {
+    .flex-movie-container {
+        position: relative;
+        // right: 20%;
     }
 }
 
@@ -54,8 +56,7 @@
     margin: 10px 0 10px 0;
 }
 
-.genre_keywords>div {}
-
+// .genre_keywords>div {}
 .watchlist-option {
     border-radius: 5%;
     background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
